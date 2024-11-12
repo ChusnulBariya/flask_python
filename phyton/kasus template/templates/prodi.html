@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+{% block title %} Prodi {% endblock %}
+{% block content %}
+<h1>Prodi</h1>
+ini halaman Fakultas
+<ul>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Program Studi</th>
+            <th scope="col">Fakultas</th>
+            <th scope="col">UK</th>
+          </tr>
+        </thead>
+        <tbody>
+    {% for data in prodi %}
+    <tr>
+        <td>{{ data.nama }}</td>
+        <td>{{ data.fakultas }}</td>
+        <td>{% if data.fakultas == "FKIR" %}
+            8.000.000
+            {% else %}
+            6.000.000
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</ul>
+{% endblock %}
+
