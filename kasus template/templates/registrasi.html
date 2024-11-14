@@ -1,0 +1,62 @@
+{% extends "main.html" %}
+{% block title %} Registrasi {% endblock %}
+{% block content %}
+<h1>Registrasi Calon Mahasiswa Baru</h1>
+{% if pesan_konfirmasi %}
+<div class="alert alert-success">
+    {{ pesan_konfirmasi }}
+</div>
+{% if foto %}
+<img src="{{ url_for('static', filename=foto.split('static/')[-1]) }}" alt="Foto"
+class="img-thumbnail" width="150" />
+{% endif %}
+</div>
+<div class="col-lg-10">
+  <p><strong>Nama:</strong> {{ nama }}</p>
+  <p><strong>Email:</strong> {{ email }}</p>
+  <p><strong>Program Studi:</strong> {{ pilihanProgramStudi }}</p>
+</div>
+</div>
+{% endif %}
+
+<form action="/registrasi" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="nisn">NISN</label>
+        <input type="text" class="form-control" name="nisn">
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" name="email">
+    </div>
+    <div class="form-group">
+        <label for="tglLahir">Tanggal lahir</label>
+        <input type="date" class="form-control" name="tglLahir">
+    </div>
+    <div class="form-group">
+        <label for="asalSekolah">Asal Sekolah </label>
+        <input type="text" class="form-control" name="asalSekolah">
+    </div>
+    <div class="form-group">
+        <label for="nama">Nama</label>
+        <input type="text" class="form-control" name="nama">
+    </div>
+    <div class="form-group">
+        <label for="pilihanProgramStudi">Pilihan Program Studi</label>
+        <select class="form-select" aria-label="Default select example" name="pilihanProgramStudi">
+            <option selected>PILIH</option>
+            <option value="IF">Informatika</option>
+            <option value="SI">Sistem Informasi</option>
+            <option value="TE">Teknink Elektro</option>
+          </select>
+    </div>
+    <div class="row mt-3">
+        <div class="form-group col">
+          <label for="foto">Foto</label>
+          <input type="file" name="foto" class="form-control" />
+        </div>
+      </div>
+    <button type="submit" class="btn btn-primary mt-3">
+        Kirim
+    </button>
+</form>
+{% endblock %}

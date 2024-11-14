@@ -2,5 +2,31 @@
 {% block title %} Hubungi Kami {% endblock %}
 {% block content %}
 <h1>Hubungi Kami</h1>
-ini halaman Fakultas
+{% if pesan_konfirmasi %}
+<div class="alert alert-success">
+    {{ pesan_konfirmasi }}
+    <ul>
+        <li>{{ nama }}</li>
+        <li>{{ email }}</li>
+        <li>{{ pesan }}</li>
+    </ul>
+</div>
+{% endif %}
+<form action="/hubungiKami" method="post">
+    <div class="form-group">
+        <label for="nama">Nama</label>
+        <input type="text" class="form-control" name="nama">
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" name="email">
+    </div>
+    <div class="form-group">
+        <label for="pesan">Pesan</label>
+        <input type="text" class="form-control" name="pesan">
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">
+        Kirim
+    </button>
+</form>
 {% endblock %}
